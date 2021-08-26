@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>
+            Product Store
+        </title>
+    </head>
+    <body>
+        <h1>
+            welcome to Fruit Store!!
+        </h1>
+        <h2>
+            Enter your scan code here
+        </h2>
+        <input id="myButton" type="text"  value="" >
+        <input type="submit" value="Total" onclick="findTotalAmount()">
+
+        <p id="total"></p>
+        <script> 
+        let priceAmount=0.0,A_count=0,C_count=0;   
+        function findTotalAmount(){
+            let productList=document.getElementById("myButton").value;
+            for (var i=0; i< productList.length; i++){
+                switch(productList[i]){
+                    case ('A'):
+                        A_count++;
+                        if (A_count === 4){
+                            priceAmount+=(100-(3*35));
+                            A_count=0;
+                            }else{ priceAmount+=35;}
+                        break;
+                        case ("B"):
+                            priceAmount+=65;
+                            break;
+                        case ('C'):
+                            C_count++;
+                            if (C_count === 6){
+                                priceAmount+=(250-(5*50));
+                                C_count=0;
+                                }else{ priceAmount+=50;}
+                            break;
+                        case ("D"):
+                            priceAmount+=85;
+                            break;
+                }
+            }
+           
+            document.getElementById("total").innerHTML= "The Amount to be paid is "+ priceAmount;
+        }
+        </script>
+    </body>
+</html>
